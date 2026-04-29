@@ -114,13 +114,3 @@ PassManager([
 - **Pandas** — Metrics tables
 
 ---
-
-## 📝 Report Outline (Suggested)
-
-1. Introduction — NISQ hardware and the need for optimization
-2. Background — Qiskit transpiler stages and passes
-3. System Design — Architecture of this tool
-4. Experiments — Results across 4 circuits × 4 backends × 4 levels
-5. Custom Pass — Implementation and evaluation
-6. QAOA Finance Demo — Application context
-7. Conclusion — Findings and limitations
