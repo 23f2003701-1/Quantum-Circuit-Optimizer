@@ -1,14 +1,12 @@
 """
 Quantum Circuit Optimizer — Streamlit Dashboard
 ================================================
-A visual tool to analyze and optimize quantum circuits
-for NISQ hardware using Qiskit's transpilation pipeline.
+A visual tool to analyze and optimize quantum circuits for NISQ hardware using Qiskit's transpilation pipeline.
 """
 
 import sys
 import os
 
-# Make sure local modules are importable regardless of working directory
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 
 import streamlit as st

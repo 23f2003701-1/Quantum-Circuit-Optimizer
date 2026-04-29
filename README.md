@@ -112,5 +112,3 @@ PassManager([
 - **Plotly** — Interactive charts and graphs
 - **Matplotlib** — Circuit diagrams
 - **Pandas** — Metrics tables
-
----

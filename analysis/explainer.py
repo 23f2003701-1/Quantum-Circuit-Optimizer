@@ -1,10 +1,8 @@
 """
 Explainability layer for quantum circuit optimization.
 
-This module analyses what transformations the transpiler applied,
-giving human-readable explanations of *why* and *how* the circuit changed.
-It also implements a simple custom cancellation pass to demonstrate
-custom transpiler pass creation.
+This module analyses what transformations the transpiler applied, giving human-readable explanations of *why* and *how* the circuit changed.
+It also implements a simple custom cancellation pass to demonstrate custom transpiler pass creation.
 """
 
 from dataclasses import dataclass

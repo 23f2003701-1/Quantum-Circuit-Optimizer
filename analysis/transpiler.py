@@ -1,7 +1,6 @@
 """
 Transpilation engine.
-Takes a circuit + backend, runs optimization levels 0–3,
-and returns all metrics and transpiled circuits.
+Takes a circuit + backend, runs optimization levels 0–3, and returns all metrics and transpiled circuits.
 """
 
 from dataclasses import dataclass, field
