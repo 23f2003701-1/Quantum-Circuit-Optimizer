@@ -13,8 +13,9 @@ custom transpiler passes step-by-step, and explore a QAOA portfolio optimization
 ```
 quantum_optimizer/
 │
-├── app.py                        ← Main Streamlit dashboard (run this)
+├── app.py                        ← Main Streamlit dashboard 
 ├── requirements.txt              ← All Python dependencies
+├── .gitignore
 │
 ├── circuits/
 │   └── benchmarks.py             ← GHZ, QFT, Grover, QAOA circuit definitions
