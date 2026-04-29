@@ -401,27 +401,27 @@ with tabs[0]:
 
     st.markdown('<div class="section-header">📊 Metrics Comparison</div>', unsafe_allow_html=True)
     fig_metrics = plot_metrics_comparison(result.metrics, result.original_metrics)
-    st.plotly_chart(fig_metrics, width='stretch')
+    st.plotly_chart(fig_metrics, use_column_width=True)
 
     st.markdown('<div class="section-header">📉 Improvement Trend</div>', unsafe_allow_html=True)
     fig_trend = plot_improvement_trend(result.metrics, result.original_metrics)
-    st.plotly_chart(fig_trend, width='stretch')
+    st.plotly_chart(fig_trend, use_column_width=True)
 
     st.markdown('<div class="section-header">🎲 Stochastic Variance (Level 3)</div>', unsafe_allow_html=True)
     st.caption(f"Same circuit, {n_seeds} different random seeds. "
                "Routing is stochastic — different seeds produce different SWAP overhead.")
     fig_stochastic = plot_stochastic_distribution(stochastic)
-    st.plotly_chart(fig_stochastic, width='stretch')
+    st.plotly_chart(fig_stochastic, use_column_width=True)
 
     # Gate breakdown side by side
     st.markdown('<div class="section-header">🍩 Gate Type Breakdown</div>', unsafe_allow_html=True)
     ga, gb = st.columns(2)
     with ga:
         fig_orig = plot_gate_breakdown(result.original_metrics, "Original")
-        st.plotly_chart(fig_orig, width='stretch')
+        st.plotly_chart(fig_orig, use_column_width=True)
     with gb:
         fig_opt = plot_gate_breakdown(result.metrics[3], "Level 3 Optimized")
-        st.plotly_chart(fig_opt, width='stretch')
+        st.plotly_chart(fig_opt, use_column_width=True)
 
     # Diff summary
     st.markdown('<div class="section-header">📋 Optimization Diff Summary</div>', unsafe_allow_html=True)
@@ -455,7 +455,7 @@ with tabs[1]:
                 result.original_circuit,
                 title=f"{circuit_name} — Original"
             )
-        st.image(orig_img, width='stretch')
+        st.image(orig_img, use_column_width=True)
 
     with c_opt:
         opt_m = result.metrics[selected_level]
@@ -466,7 +466,7 @@ with tabs[1]:
                 result.transpiled[selected_level],
                 title=f"{circuit_name} — Level {selected_level}"
             )
-        st.image(opt_img, width='stretch')
+        st.image(opt_img, use_column_width=True)
 
     # Metric table for all levels
     st.markdown('<div class="section-header">📋 Full Metrics Table</div>', unsafe_allow_html=True)
@@ -495,7 +495,6 @@ with tabs[1]:
             subset=["Depth", "Total Gates", "CX Gates", "SWAP Gates", "Weighted Cost"],
             color="#450a0a",
         ),
-        width='stretch',
         hide_index=True,
     )
     st.caption("Green = best (minimum), Red = worst (maximum) across all rows.")
@@ -572,7 +571,7 @@ with tabs[2]:
     # Waterfall chart
     st.markdown('<div class="section-header">📊 Gate Count Waterfall</div>', unsafe_allow_html=True)
     fig_waterfall = plot_custom_pass_waterfall(custom_log)
-    st.plotly_chart(fig_waterfall, width='stretch')
+    st.plotly_chart(fig_waterfall, use_column_width=True)
 
     # Show the custom circuit
     st.markdown('<div class="section-header">🔬 Custom-Optimized Circuit</div>', unsafe_allow_html=True)
@@ -580,11 +579,11 @@ with tabs[2]:
     with ca:
         st.markdown("**Before custom pass**")
         img_before = draw_circuit_to_image(result.original_circuit, "Original (abstract)")
-        st.image(img_before, width='stretch')
+        st.image(img_before, use_column_width=True)
     with cb:
         st.markdown("**After custom pass**")
         img_after = draw_circuit_to_image(custom_circuit, "After Custom PassManager")
-        st.image(img_after, width='stretch')
+        st.image(img_after, use_column_width=True)
 
     # Code snippet
     st.markdown('<div class="section-header">💻 Custom Pass Code</div>', unsafe_allow_html=True)
@@ -625,7 +624,7 @@ with tabs[3]:
     with hw_a:
         st.markdown('<div class="section-header">🖥️ Coupling Map</div>', unsafe_allow_html=True)
         fig_coupling = plot_coupling_map(backend_name)
-        st.plotly_chart(fig_coupling, width='stretch')
+        st.plotly_chart(fig_coupling, use_column_width=True)
 
         info = BACKENDS[backend_name]
         st.markdown(f"""
@@ -686,7 +685,7 @@ with tabs[3]:
             legend=dict(bgcolor="#1e2130"),
             margin=dict(t=50, b=60, l=40, r=20),
         )
-        st.plotly_chart(fig_hw, width='stretch')
+        st.plotly_chart(fig_hw, use_column_width=True)
 
     st.markdown('<div class="section-header">📚 Why Connectivity Matters</div>',
                 unsafe_allow_html=True)
@@ -750,7 +749,7 @@ with tabs[4]:
             "Sector": ["Tech", "Tech", "EV/Tech", "Tech"],
             "Correlation pairs": ["(Q0,Q1), (Q0,Q3)", "(Q1,Q0), (Q1,Q2)", "(Q2,Q1), (Q2,Q3)", "(Q3,Q0), (Q3,Q2)"],
         })
-        st.dataframe(asset_data, width='stretch', hide_index=True)
+        st.dataframe(asset_data, hide_index=True)
         st.markdown("""
         <div class="explain-card">
           <div class="stage">Objective</div>
@@ -802,7 +801,7 @@ with tabs[4]:
             font=dict(color="#e2e8f0"),
             title=dict(text="Asset Correlation Graph", font=dict(size=13, color="#86efac")),
         )
-        st.plotly_chart(fig_assets, width='stretch')
+        st.plotly_chart(fig_assets, use_column_width=True)
 
     # Now run the QAOA circuit through the optimizer
     st.markdown('<div class="section-header">⚛️ QAOA Circuit Optimization</div>',
@@ -818,21 +817,21 @@ with tabs[4]:
     with qa:
         st.markdown("**QAOA Circuit — Original**")
         qaoa_orig_img = draw_circuit_to_image(qaoa_circuit, "QAOA Portfolio Circuit")
-        st.image(qaoa_orig_img, width='stretch')
+        st.image(qaoa_orig_img, use_column_width=True)
 
     with qb:
         st.markdown("**QAOA Circuit — Level 3 Optimized**")
         qaoa_opt_img = draw_circuit_to_image(
             qaoa_result.transpiled[3], "QAOA Optimized for Hardware"
         )
-        st.image(qaoa_opt_img, width='stretch')
+        st.image(qaoa_opt_img, use_column_width=True)
 
     # QAOA metrics
     st.markdown('<div class="section-header">📊 QAOA Optimization Impact</div>',
                 unsafe_allow_html=True)
 
     fig_qaoa = plot_metrics_comparison(qaoa_result.metrics, qaoa_result.original_metrics)
-    st.plotly_chart(fig_qaoa, width='stretch')
+    st.plotly_chart(fig_qaoa, use_column_width=True)
 
     st.markdown("""
     <div class="explain-card">
